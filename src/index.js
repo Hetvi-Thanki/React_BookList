@@ -27,20 +27,27 @@ function BookList(){
     <section className='booklist'>
         {books.map((book)=>{
             return (
-                <Book key={book.id} book={book}></Book>
+                <Book key={book.id} {...book}></Book>
             );
         })}
     </section>
     );
 };
 
-const Book =(props)=>{
-  const {img,title,author}=props.book;
+const Book =({img,title,author})=>{ 
+  //const {img,title,author}=props;
+
+  //attribute, eventHandler
+  //onClick,onMouseOver
+  const clickHandler =()=>{
+      alert('hello');
+  }
     return (
     <article className='book'>
-        <img src={img} alt=""/>
-        <h1>{title}</h1>
+        <img src={img} alt=''/>
+        <h1 onClick={()=> console.log(title)}>{title}</h1> {/* inline function*/}        
         <h4 style={{color:'#617d98',fontSize:'0.75rem',margin:'0.25rem'}}>{author}</h4>
+        <button type="button" onClick={clickHandler }>Refernce</button> {/* refering a function*/} 
         {/* {props.children} */}
     </article>
     );
